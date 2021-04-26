@@ -1,39 +1,53 @@
 {
-  "name": "WordSearchJS",
-  "version": "0.6.0",
-  "description": "A word search task for Qualtrics. Code adapted from Robert J. Calin-Jageman's task (https://calin-jageman.net/lab/word_search/)",
-  "main": "index.js",
-  "author": "Quentin André",
+  "name": "jarrydandthejackles-wordsearch",
+  "version": "0.0.1",
+  "description": "A word search font-end game that is easy to add to any project.",
+  "author": {
+    "name": "Jarryd Lisher",
+    "email": "jarryd@jlisher.com",
+    "url": "https://jlisher.com"
+  },
+  "contributors": [
+    {
+      "name": "Jarryd Lisher",
+      "email": "jarryd@jlisher.com",
+      "url": "https://jlisher.com"
+    },
+    {
+      "name": "Quentin André",
+      "url": "https://quentinandre.net/"
+    }
+  ],
   "license": "MIT",
+  "main": "./src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --progress --color"
+    "production": "cross-env NODE_ENV=production webpack --color",
+    "prod": "npm run production",
+    "development": "cross-env NODE_ENV=development webpack --progress --color",
+    "dev": "npm run development",
+    "watch": "npm run dev -- --watch",
+    "serve": "webpack serve --open"
   },
   "devDependencies": {
-    "autoprefixer": "^8.6.3",
-    "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.4",
-    "babel-preset-env": "^1.7.0",
-    "clean-webpack-plugin": "^0.1.19",
-    "css-loader": "^0.28.11",
-    "exports-loader": "^0.7.0",
-    "expose-loader": "^0.7.5",
-    "extract-text-webpack-plugin": "^4.0.0-beta.0",
-    "file-loader": "^1.1.11",
-    "image-webpack-loader": "^4.3.1",
-    "imports-loader": "^0.8.0",
-    "less": "^3.8.1",
-    "less-loader": "^4.1.0",
-    "mini-css-extract-plugin": "^0.4.0",
-    "style-loader": "^0.21.0",
-    "url-loader": "^1.1.1",
-    "webpack": "^4.12.0",
-    "webpack-cli": "^3.0.8",
-    "webpack-dev-server": "^3.1.4",
-    "webpack-md5-hash": "^0.0.6"
+    "@types/node": "^14.14.41",
+    "@types/webpack": "^5.28.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-loader": "^8.2.2",
+    "cross-env": "^7.0.3",
+    "css-loader": "^5.2.4",
+    "html-webpack-plugin": "^5.3.1",
+    "mini-css-extract-plugin": "^1.5.0",
+    "style-loader": "^2.0.0",
+    "sass": "^1.32.11",
+    "sass-loader": "^11.0.1",
+    "ts-loader": "^8.2.0",
+    "tsconfig-paths": "^3.9.0",
+    "tsconfig-paths-webpack-plugin": "^3.5.1",
+    "tslib": "^2.2.0",
+    "typescript": "^4.2.4",
+    "webpack": "^5.35.1",
+    "webpack-cli": "^4.6.0",
+    "webpack-dev-server": "^3.11.2"
   },
-  "dependencies": {
-    "ts-loader": "^5.3.0",
-    "typescript": "^3.1.6"
-  }
+  "dependencies": {}
 }

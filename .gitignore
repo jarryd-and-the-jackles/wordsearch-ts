@@ -1,6 +1,9 @@
+# directories
 node_modules/
 .idea/
-test.html
-yarn.lock
-WIP/
 
+# files
+.env.*
+!.env.example
+*.log
+*.local

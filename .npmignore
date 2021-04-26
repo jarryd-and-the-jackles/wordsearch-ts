@@ -1,0 +1,11 @@
+# directories
+/.idea/
+/node_modules/
+/tests/
+
+# files
+.editorconfig
+.gitignore
+package-lock.json
+tsconfig.json
+webpack.config.js

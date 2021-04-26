@@ -1,17 +1,34 @@
 {
   "compilerOptions": {
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "allowUmdGlobalAccess": true,
+    "alwaysStrict": true,
+    "baseUrl": "/",
     "declaration": true,
-    "lib": ["dom", "es6"],
-    "module": "commonjs",
-    "moduleResolution": "node",
+    "declarationDir": "./types",
+    "declarationMap": true,
+    "downlevelIteration": true,
+    "esModuleInterop": true,
+    "importHelpers": true,
+    "incremental": true,
+    "inlineSourceMap": true,
+    "isolatedModules": true,
+    "jsx": "react",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
     "noEmitOnError": true,
-    "noUnusedLocals": true,
-    "outDir": "./lib",
-    "target": "es6",
-    "strict": true,
-    "strictNullChecks": false,
-    "suppressImplicitAnyIndexErrors": true,
-    "types": []
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "pretty": true,
+    "strictBindCallApply": true,
+    "strictFunctionTypes": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": true,
+    "target": "ES5"
   },
-  "include": ["src/*"]
+  "include": [
+    "./src/"
+  ]
 }
