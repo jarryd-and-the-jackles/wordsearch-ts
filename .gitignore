@@ -1,9 +1,7 @@
 # directories
-node_modules/
-.idea/
+/node_modules/
+/.idea/
 
 # files
-.env.*
-!.env.example
 *.log
 *.local

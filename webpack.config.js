@@ -1,19 +1,25 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 
 require("webpack-dev-server");
 
 const config = {
   mode: process.env.NODE_ENV !== "production" ? "development" : "production",
-  devtool: process.env.NODE_ENV !== "production" ? "eval-source-map" : "inline-nosources-source-map",
+  devtool: process.env.NODE_ENV !== "production" ? "eval-source-map" : "nosources-source-map",
   devServer: {
     contentBase: "./dist"
   },
   entry: {
-    wordsearch: "./src/index.ts",
+    wordsearch: {
+      import: "./src/index",
+      library: {
+        name: ["WordSearchCreator", "WordSearch"],
+        export: ["WordSearchCreator", "WordSearch"],
+        type: "umd",
+      },
+    },
     app: {
-      import: "./src/app.ts",
+      import: "./src/app",
       dependOn: [
         "wordsearch",
       ]
@@ -23,16 +29,16 @@ const config = {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].bundle.js",
     clean: true,
-    library: {
-      type: "umd",
-    }
   },
-  target: ["web", "es5"],
+  target: "web",
+  stats: {
+    errorDetails: true,
+  },
   optimization: {
     minimize: true,
   },
   watch: false,
-  context: __dirname,
+  context: path.resolve(__dirname),
   module: {
     rules: [
       {
@@ -50,17 +56,6 @@ const config = {
           "sass-loader",
         ],
       },
-      {
-        test: /\.tsx?$/i,
-        exclude: /node_modules/,
-        use: {
-          loader: "ts-loader",
-          options: {
-            transpileOnly: false,
-            projectReferences: true,
-          },
-        },
-      },
     ],
   },
   resolve: {
@@ -68,27 +63,13 @@ const config = {
       "node_modules",
       path.resolve(__dirname),
     ],
-    extensions: [".tsx", ".ts", ".js", ".css", ".scss"],
-    plugins: [
-      new TsconfigPathsPlugin({
-        logLevel: "info",
-        mainFields: "module",
-        extensions: [".js", ".ts", ".tsx"],
-      }),
-    ],
+    extensions: [".js", ".scss", ".css"],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      templateContent: `
-        <html lang="en">
-          <body>
-            <h1>Word Search Demo App</h1>
-            <div id="wordsearch-container"></div>
-          </body>
-        </html>
-      `,
-      minify: true,
-      title: "Word Search Demo App"
+      template: "./html/app.html",
+      hash: true,
+      minify: true
     }),
   ],
 };

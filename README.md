@@ -1,81 +1,64 @@
-# WordSearchJS
-A Javascript library to add Word Search Tasks to online and offline experiments. Adapted from Robert J. Calin-Jageman's
-[word search task](https://calin-jageman.net/lab/word_search/), with added functionality to facilitate Qualtrics integration.
+# jarrydandthejackles-wordsearch-ts
 
-You can preview it on CodePen here:
+A word search font-end game that is easy to add to any project.
 
-https://codepen.io/QuentinAndre/full/rQLejK/
+## History
 
-## Using WordSearchJS in Qualtrics
+This is a simple that I got a bit carried away with. 
 
-### Setup
+Originally a fork of [Quentin André's WordSearchJS](https://github.com/QuentinAndre/WordSearchJS). 
+The environment has been made a bit more strict and a few additional features added. 
 
-1. Navigate to the "Look and Feel" section of your survey, and click on the "Advanced" tab
-2. Edit the "Header" section, and add the following lines to load the library script:
-```
-<script src="https://cdn.jsdelivr.net/gh/QuentinAndre/WordSearchJS/lib/wordsearch.min.js"></script>
-```
-3. Create a "Text" question, and add the following HTML code:
-```
-<div id="mysearchtask"></div>
-```
+## Usage
 
-4. Edit the "Custom JS" of the question, and add the following Javascript code in the `Qualtrics.SurveyEngine.addOnReady` section:
-```
-var mygrid = [
-    ['.', '.', '.', '.', '.', '.'],
-    ['.', 'T', 'E', 'S', 'T', '.'],
-    ['.', '.', '.', '.', '.', '.']
-    ];
+This is just a quick guide for drawing the word search on any page. 
 
-var mywords = ["TEST"];
+### NodeJS (Typescript / ES6)
 
-ws = new WordSearch({
-        "grid": mygrid, // Your grid to search
-        "words": mywords, // The list of words to find
-        "parentId": "mysearchtask",
-        "onFindWord": function() {console.log("A word was found")} // What to do when a word is found 
-    });
+For the guys building their front-ends with ES6 or Typescript, you can import the modules individually. A full list will come soon, please refer to the `./src/` directory for a list of modules available. 
+
+To get started simple import the `WordSearchCreator` modules, instantiate an instance and call the `{instance}.create()` method: 
+
+```ts
+import WordSearchCreator from "jarrydandthejackles-wordsearch-ts";
+
+const creator = new WordSearchCreator({
+  parentId: "word-search-parent", // the id selector of the parent element 
+  words: ["FIND", "ME", "SOMEWHERE"], // list of words to be found
+  width: 10, // the number of columns in the grid
+  height: 10, // the number of rows in the grid
+});
+
+creator.create();
 ```
 
-That's it! You have added a word search task to Qualtrics!
+### In Browser
 
-### Accessing and storing participants' behavior
+For the browser support there is a bundled package available here: 
+- [Bundled JS](./dist/wordsearch.bundle.js)
+- [Source Maps](./dist/wordsearch.bundle.js.map)
 
-You can access three useful statistics from WordSearchJS at any time:
-* `WordSearch.getScore()` returns the number of words found so far.
-* `WordSearch.getRemaining()` returns the number of words not found yet.
-* `WordSearch.getTiming()` returns a list of length `words`, containing at the index of each word a `-1` (if the word has not been found yet) or an integer (corresponding to the time in seconds when the word was found).
+The bundled packed makes the `WordSearchCreator` and `WordSearch` classes available to you as globals. Usage is the same as above except you don't need an import: 
 
+```js
+var creator = new WordSearchCreator({
+  parentId: "word-search-parent", // the id selector of the parent element 
+  words: ["FIND", "ME", "SOMEWHERE"], // list of words to be found
+  width: 10, // the number of columns in the grid
+  height: 10, // the number of rows in the grid
+});
 
-Combined with the `onFindWord` argument, you can use those methods to store useful information in Qualtrics:
-
-```
-var mygrid = [
-    ['.', '.', '.', '.', '.', '.'],
-    ['.', 'T', 'E', 'S', 'T', '.'],
-    ['.', '.', '.', '.', '.', '.']
-    ];
-
-var mywords = ["TEST"];
-
-function storeScoreAndTimingInQualtrics() {
-    var score = this.getScore();
-    var timing = this.getTiming();
-    var timing_str = timing.join(",") // Convert the timings separated by commas to a string
-    Qualtrics.SurveyEngine.setEmbeddedData("wordsFound", score);
-    Qualtrics.SurveyEngine.setEmbeddedData("timingWordsFound", timing_str);
-}
-
-ws = new WordSearch({
-        "grid": mygrid,
-        "words": mywords,
-        "parentId": "mysearchtask",
-        "onFindWord": storeScoreAndTimingInQualtrics; // No parenthesis! Will call this function when a word is found.
-    });
+creator.create();
 ```
 
-## Version history
+> Please see the [`CreatorOptionsInterface` interface](./src/creator.d.ts) for further available options.
 
-### v0.5.0
-* First release of the library.
+## Demo
+
+There is a demo available here: 
+- [Page](./dist/index.html)
+- [Source](./src/app.ts)
+
+## Available Options
+
+WIP

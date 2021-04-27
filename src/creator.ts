@@ -175,18 +175,6 @@ export class Creator {
     return this.directions;
   }
 
-  public getDirectionKeys(): string[] {
-    return this.getDirections().getAllKeys();
-  }
-
-  public getActiveDirections(): object | Direction[] {
-    return this.getDirections().getAllActive();
-  }
-
-  public getActiveDirectionKeys(): string[] {
-    return this.getDirections().getActiveKeys();
-  }
-
   public getRandomDirection(): Direction {
     return this.getDirections().getRandom();
   }

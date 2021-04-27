@@ -1,4 +1,4 @@
-import {Creator} from "./index";
+import WordSearchCreator from "./index";
 
 function wordCollection() {
   return [
@@ -57,8 +57,8 @@ function createWordSearch(parentId = "wordsearch-container") {
   let sliceStartMax = (words.length - sliceCount);
   let sliceStart = randNumber(sliceStartMax, 0);
 
-  Creator.debugging = true;
-  const wordsearchCreator = new Creator({
+  WordSearchCreator.debugging = true;
+  const wordsearchCreator = new WordSearchCreator({
     height: 10,
     width: 10,
     words: words.slice(sliceStart, (sliceStart + sliceCount)),
@@ -74,7 +74,7 @@ function createWordSearch(parentId = "wordsearch-container") {
   console.log("Word Count: ", wordsearchCreator.getWordCount());
   console.log("Width: ", wordsearchCreator.width);
   console.log("Height: ", wordsearchCreator.height);
-  console.log(Creator.wordMap);
+  console.log(WordSearchCreator.wordMap);
   console.log("Created Word Search.");
 
   return {
@@ -94,6 +94,7 @@ setTimeout(function () {
 
   const parent2 = document.createElement("div");
   parent2.id = "wordsearch-container-1";
+  // noinspection XHTMLIncompatabilitiesJS
   document.body.append(parent2);
 
   setTimeout(function () {
@@ -104,3 +105,5 @@ setTimeout(function () {
     console.log(wordsearch2);
   }, 500);
 }, 1000);
+
+export {};

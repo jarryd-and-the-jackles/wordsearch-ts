@@ -71,7 +71,13 @@ export class WordSearch {
     this.wordSelectorPrefix = wordSelectorPrefix;
 
     this.setCellOptions(cellOptions);
-    this.parent = document.getElementById(parentId) as HTMLElement;
+    const parent = document.getElementById(parentId);
+
+    if (!parent) {
+      throw new TypeError(`Invalid Type passed: expecting instance of "HTMLElement", got "null"`);
+    }
+
+    this.parent = parent;
     this.parent.setAttribute("class", "ws-wrapper");
 
     this.timeToFind = new Array(this.words.length).fill(-1);
@@ -138,7 +144,11 @@ export class WordSearch {
   }
 
   public displayScore(): void {
-    const elem = this.parent.querySelector("#ws-score") as Element;
+    const elem = this.parent.querySelector("#ws-score");
+
+    if (!elem) {
+      throw new TypeError(`Invalid Type: expecting instance of "Element", got "null"`);
+    }
 
     elem.innerHTML = "Found " + this.getScore() + " out of " + this.words.length + " words so far.";
   }
@@ -217,7 +227,11 @@ export class WordSearch {
         // Fill text in middle center
         const x = cvEl.width / 2;
         const y = cvEl.height / 2;
-        const ctx = cvEl.getContext("2d") as CanvasRenderingContext2D;
+        const ctx = cvEl.getContext("2d");
+
+        if (!ctx) {
+          throw new TypeError(`Invalid Type: expecting instance of "CanvasRenderingContext2D", got "null"`);
+        }
         ctx.font = String(this.cellOptions.font);
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
@@ -283,7 +297,11 @@ export class WordSearch {
     for (let i = 0; i < selected.length; i++) {
       const row = selected[i].row + 1,
         col = selected[i].col + 1,
-        el = this.parent.querySelector(".ws-row:nth-child(" + row + ") .ws-col:nth-child(" + col + ")") as Element;
+        el = this.parent.querySelector(".ws-row:nth-child(" + row + ") .ws-col:nth-child(" + col + ")");
+
+      if (!el) {
+        throw new TypeError(`Invalid Type: expecting instance of "Element", got "null"`);
+      }
 
       el.classList.add("ws-found");
 
@@ -301,7 +319,12 @@ export class WordSearch {
     }
 
     this.timeToFind[index] = this.timer.getElapsed();
-    const ele = this.parent.querySelector("#" + this.wordSelectorPrefix + word.toLowerCase()) as HTMLElement;
+    const ele = this.parent.querySelector("#" + this.wordSelectorPrefix + word.toLowerCase());
+
+    if (!ele) {
+      throw new TypeError(`Invalid Type: expecting instance of "HTMLElement", got "null"`);
+    }
+
     ele.setAttribute("class", "ws-word-found");
 
     return true;

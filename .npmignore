@@ -1,11 +1,12 @@
 # directories
 /.idea/
 /node_modules/
-/tests/
+/html/
 
 # files
+/dist/index.html
+/dist/app.bundle.js
 .editorconfig
 .gitignore
 package-lock.json
-tsconfig.json
 webpack.config.js

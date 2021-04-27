@@ -1,14 +1,9 @@
 import Creator from "./creator";
-
-const WordSearchCreator = Creator;
-
-// export our primary modules
+declare const WordSearchCreator: typeof Creator;
 export default WordSearchCreator;
-export {WordSearchCreator};
+export { WordSearchCreator };
 export * from "./creator";
 export * from "./wordsearch";
-
-// export our utility modules
 export * from "./utils/collection";
 export * from "./utils/coordinate";
 export * from "./utils/direction";
@@ -21,3 +16,4 @@ export * from "./utils/row-collection";
 export * from "./utils/grid";
 export * from "./utils/alphabet";
 export * from "./utils/chronometer";
+//# sourceMappingURL=index.d.ts.map
