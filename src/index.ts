@@ -1,10 +1,7 @@
 import Creator from "./creator";
 
-const WordSearchCreator = Creator;
-
 // export our primary modules
-export default WordSearchCreator;
-export {WordSearchCreator};
+export default Creator;
 export * from "./creator";
 export * from "./wordsearch";
 

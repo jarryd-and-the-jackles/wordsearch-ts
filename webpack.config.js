@@ -10,14 +10,7 @@ const config = {
     contentBase: "./dist"
   },
   entry: {
-    wordsearch: {
-      import: "./src/index",
-      library: {
-        name: ["WordSearchCreator", "WordSearch"],
-        export: ["WordSearchCreator", "WordSearch"],
-        type: "umd",
-      },
-    },
+    wordsearch: "./src/index",
     app: {
       import: "./src/app",
       dependOn: [
@@ -29,8 +22,12 @@ const config = {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].bundle.js",
     clean: true,
+    library: {
+      type: "umd",
+      name: "JJWordSearch",
+    }
   },
-  target: "web",
+  target: ["web", "es5"],
   stats: {
     errorDetails: true,
   },

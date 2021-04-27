@@ -17,12 +17,12 @@ This is just a quick guide for drawing the word search on any page.
 
 For the guys building their front-ends with ES6 or Typescript, you can import the modules individually. A full list will come soon, please refer to the `./src/` directory for a list of modules available. 
 
-To get started simple import the `WordSearchCreator` modules, instantiate an instance and call the `{instance}.create()` method: 
+To get started simple import the `Creator` modules, instantiate an instance and call the `{instance}.create()` method: 
 
 ```ts
-import WordSearchCreator from "jarrydandthejackles-wordsearch-ts";
+import Creator from "jarrydandthejackles-wordsearch-ts";
 
-const creator = new WordSearchCreator({
+const creator = new Creator({
   parentId: "word-search-parent", // the id selector of the parent element 
   words: ["FIND", "ME", "SOMEWHERE"], // list of words to be found
   width: 10, // the number of columns in the grid
@@ -38,10 +38,10 @@ For the browser support there is a bundled package available here:
 - [Bundled JS](./dist/wordsearch.bundle.js)
 - [Source Maps](./dist/wordsearch.bundle.js.map)
 
-The bundled packed makes the `WordSearchCreator` and `WordSearch` classes available to you as globals. Usage is the same as above except you don't need an import: 
+The bundled packed makes the library available through the `JJWordSearch` global. Usage is the same as above except you don't need an import: 
 
 ```js
-var creator = new WordSearchCreator({
+var creator = new JJWordSearch.Creator({
   parentId: "word-search-parent", // the id selector of the parent element 
   words: ["FIND", "ME", "SOMEWHERE"], // list of words to be found
   width: 10, // the number of columns in the grid

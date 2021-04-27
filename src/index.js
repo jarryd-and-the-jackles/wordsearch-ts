@@ -1,7 +1,5 @@
 import Creator from "./creator";
-var WordSearchCreator = Creator;
-export default WordSearchCreator;
-export { WordSearchCreator };
+export default Creator;
 export * from "./creator";
 export * from "./wordsearch";
 export * from "./utils/collection";
