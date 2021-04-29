@@ -306,7 +306,7 @@ export class WordSearch {
       el.classList.add("ws-found");
 
       if (typeof word !== "undefined") {
-        el.classList.add(this.wordSelectorPrefix + word);
+        el.classList.add(this.wordSelectorPrefix + word.toLowerCase());
       }
     }
     this.displayScore();

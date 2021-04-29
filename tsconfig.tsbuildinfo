@@ -167,7 +167,7 @@
         "affectsGlobalScope": false
       },
       "./src/wordsearch.ts": {
-        "version": "90418eee041f4df2376e1c2ad30b64750be615db822be97e707b948178715f80",
+        "version": "4379229ef7de447aa7843944fc1d5d6eb66fc4071753d48f9487f9241241d711",
         "signature": "c7e0da16482421b61c4076e74f2a95a95ebecdc8f6c1fd09b46806dc3781b54d",
         "affectsGlobalScope": false
       },
