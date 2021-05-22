@@ -1,0 +1,7 @@
+title: jarrydandthejackles-wordsearch-ts
+theme: jekyll-theme-tactile
+defaults:
+  - scope:
+      path: "example"
+    values:
+      layout: "null"

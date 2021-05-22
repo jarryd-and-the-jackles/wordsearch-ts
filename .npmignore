@@ -1,7 +1,7 @@
 # directories
 /.idea/
 /node_modules/
-/html/
+/docs/
 
 # files
 /dist/index.html
