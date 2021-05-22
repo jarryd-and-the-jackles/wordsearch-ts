@@ -167,8 +167,8 @@
         "affectsGlobalScope": false
       },
       "./src/wordsearch.ts": {
-        "version": "4379229ef7de447aa7843944fc1d5d6eb66fc4071753d48f9487f9241241d711",
-        "signature": "c7e0da16482421b61c4076e74f2a95a95ebecdc8f6c1fd09b46806dc3781b54d",
+        "version": "bb3692bb0b876dcf52758d34d94ba5157b31cae2bc1aa89eda4dc8b9ad41ce84",
+        "signature": "b589d0747a5447d1a699b2c2eb1785cbe72cd8325a17e2f4e0ca75568dc35d77",
         "affectsGlobalScope": false
       },
       "./src/utils/direction.ts": {

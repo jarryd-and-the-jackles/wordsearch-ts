@@ -239,51 +239,63 @@ export class WordSearch {
         ctx.fillText(item.letter, x, y);
 
         // Add event listeners
-        cvEl.addEventListener("mousedown", this.handleMousedown(item));
+        cvEl.addEventListener("touchend", this.handleSelect(item));
+        cvEl.addEventListener("mouseup", this.handleSelect(item));
         cvEl.addEventListener("mouseover", this.handleMouseover(item));
-        cvEl.addEventListener("mouseup", this.handleMouseup());
         divEl.appendChild(cvEl);
       }
     }
   }
 
-  public handleMouseover(item: MatrixItem): EventListener {
+  public handleSelect(item: MatrixItem): EventListener {
     const that = this;
-    return function (): void {
-      if (that.selectFrom) {
-        that.selected = that.getItems(that.selectFrom.row, that.selectFrom.col, item.row, item.col);
-        that.clearHighlight();
-        for (let i = 0; i < that.selected.length; i++) {
-          const current = that.selected[i],
-            row = current.row + 1,
-            col = current.col + 1,
-            el = that.parent.querySelector(".ws-row:nth-child(" + row + ") .ws-col:nth-child(" + col + ")");
+    return function (event): boolean {
+      event.preventDefault();
 
-          if (!el) {
-            throw new Error(`Invalid type: expected "MatrixItem", got "${(typeof el)}"`);
-          }
+      // If no captured touch, set the start and exit
+      if (!that.selectFrom) {
+        that.selectFrom = item;
+        // Highlight the starting point
+        that.highlightItem(item);
 
-          el.classList.add("ws-selected");
-        }
+        return false;
       }
-    };
-  }
 
-  public handleMouseup(): EventListener {
-    const that = this;
-    return function (): void {
+      // If this is a second touch, we will validate the entire selection
+      // This is to allow for mobile use as the "mouseover" event has no equivalent for touch
+      that.selected = that.getItems(that.selectFrom.row, that.selectFrom.col, item.row, item.col);
       that.selectFrom = null;
       that.clearHighlight();
       that.validateSelection(that.selected);
       that.selected = [];
+
+      return false;
     };
   }
 
-  public handleMousedown(item: MatrixItem): EventListener {
+  public handleMouseover(item: MatrixItem): EventListener {
     const that = this;
     return function (): void {
-      that.selectFrom = item;
+      if (!that.selectFrom) {
+        return;
+      }
+
+      that.selected = that.getItems(that.selectFrom.row, that.selectFrom.col, item.row, item.col);
+      that.clearHighlight();
+      for (let i = 0; i < that.selected.length; i++) {
+        that.highlightItem(that.selected[i]);
+      }
     };
+  }
+
+  public highlightItem(item: MatrixItem): void {
+    const el = this.parent.querySelector(".ws-row:nth-child(" + (item.row + 1) + ") .ws-col:nth-child(" + (item.col + 1) + ")");
+
+    if (!el) {
+      throw new TypeError(`Invalid type: expected "MatrixItem", got "${(typeof el)}"`);
+    }
+
+    el.classList.add("ws-selected");
   }
 
   public clearHighlight(): void {

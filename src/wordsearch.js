@@ -291,12 +291,34 @@ var WordSearch = (function () {
                     ctx.textBaseline = "middle";
                     ctx.fillStyle = String(this.cellOptions.style);
                     ctx.fillText(item.letter, x, y);
-                    cvEl.addEventListener("mousedown", this.handleMousedown(item));
+                    cvEl.addEventListener("touchend", this.handleSelect(item));
+                    cvEl.addEventListener("mouseup", this.handleSelect(item));
                     cvEl.addEventListener("mouseover", this.handleMouseover(item));
-                    cvEl.addEventListener("mouseup", this.handleMouseup());
                     divEl.appendChild(cvEl);
                 }
             }
+        }
+    });
+    Object.defineProperty(WordSearch.prototype, "handleSelect", {
+        enumerable: false,
+        configurable: true,
+        writable: true,
+        value: function (item) {
+            var that = this;
+            return function (event) {
+                event.preventDefault();
+                if (!that.selectFrom) {
+                    that.selectFrom = item;
+                    that.highlightItem(item);
+                    return false;
+                }
+                that.selected = that.getItems(that.selectFrom.row, that.selectFrom.col, item.row, item.col);
+                that.selectFrom = null;
+                that.clearHighlight();
+                that.validateSelection(that.selected);
+                that.selected = [];
+                return false;
+            };
         }
     });
     Object.defineProperty(WordSearch.prototype, "handleMouseover", {
@@ -306,43 +328,27 @@ var WordSearch = (function () {
         value: function (item) {
             var that = this;
             return function () {
-                if (that.selectFrom) {
-                    that.selected = that.getItems(that.selectFrom.row, that.selectFrom.col, item.row, item.col);
-                    that.clearHighlight();
-                    for (var i = 0; i < that.selected.length; i++) {
-                        var current = that.selected[i], row = current.row + 1, col = current.col + 1, el = that.parent.querySelector(".ws-row:nth-child(" + row + ") .ws-col:nth-child(" + col + ")");
-                        if (!el) {
-                            throw new Error("Invalid type: expected \"MatrixItem\", got \"" + (typeof el) + "\"");
-                        }
-                        el.classList.add("ws-selected");
-                    }
+                if (!that.selectFrom) {
+                    return;
+                }
+                that.selected = that.getItems(that.selectFrom.row, that.selectFrom.col, item.row, item.col);
+                that.clearHighlight();
+                for (var i = 0; i < that.selected.length; i++) {
+                    that.highlightItem(that.selected[i]);
                 }
             };
         }
     });
-    Object.defineProperty(WordSearch.prototype, "handleMouseup", {
-        enumerable: false,
-        configurable: true,
-        writable: true,
-        value: function () {
-            var that = this;
-            return function () {
-                that.selectFrom = null;
-                that.clearHighlight();
-                that.validateSelection(that.selected);
-                that.selected = [];
-            };
-        }
-    });
-    Object.defineProperty(WordSearch.prototype, "handleMousedown", {
+    Object.defineProperty(WordSearch.prototype, "highlightItem", {
         enumerable: false,
         configurable: true,
         writable: true,
         value: function (item) {
-            var that = this;
-            return function () {
-                that.selectFrom = item;
-            };
+            var el = this.parent.querySelector(".ws-row:nth-child(" + (item.row + 1) + ") .ws-col:nth-child(" + (item.col + 1) + ")");
+            if (!el) {
+                throw new TypeError("Invalid type: expected \"MatrixItem\", got \"" + (typeof el) + "\"");
+            }
+            el.classList.add("ws-selected");
         }
     });
     Object.defineProperty(WordSearch.prototype, "clearHighlight", {

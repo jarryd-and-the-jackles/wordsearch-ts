@@ -58,9 +58,9 @@ export declare class WordSearch {
     getItem(row: number, col: number): MatrixItem;
     getItems(rowFrom: number, colFrom: number, rowTo: number, colTo: number): MatrixItem[];
     drawMatrix(target: HTMLElement): void;
+    handleSelect(item: MatrixItem): EventListener;
     handleMouseover(item: MatrixItem): EventListener;
-    handleMouseup(): EventListener;
-    handleMousedown(item: MatrixItem): EventListener;
+    highlightItem(item: MatrixItem): void;
     clearHighlight(): void;
     markAsFound(selected: Array<MatrixItem>, word?: string): void;
     validateWord(word: string, index: number): boolean;

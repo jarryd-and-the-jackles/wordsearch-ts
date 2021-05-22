@@ -1,6 +1,6 @@
 {
   "name": "jarrydandthejackles-wordsearch-ts",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "A word search font-end game that is easy to add to any project.",
   "homepage": "https://github.com/jarryd-and-the-jackles/wordsearch-ts",
   "bugs": {
@@ -35,10 +35,10 @@
   "scripts": {
     "production": "tsc && cross-env NODE_ENV=production webpack --color",
     "prod": "npm run production",
-    "development": "cross-env NODE_ENV=development webpack --progress --color",
+    "development": "tsc && cross-env NODE_ENV=development webpack --progress --color",
     "dev": "npm run development",
     "watch": "npm run dev -- --watch",
-    "serve": "webpack serve --open"
+    "serve": "tsc && webpack serve --open"
   },
   "devDependencies": {
     "@types/node": "^14.14.41",
