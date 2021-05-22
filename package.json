@@ -1,10 +1,10 @@
 {
   "name": "jarrydandthejackles-wordsearch-ts",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A word search font-end game that is easy to add to any project.",
-  "homepage": "https://github.com/jarryd-and-the-jackles/wordsearch-ts",
+  "homepage": "https://jarrydandthejackles.github.io/wordsearch-ts/",
   "bugs": {
-    "url": "https://github.com/jarryd-and-the-jackles/wordsearch-ts/issues"
+    "url": "https://github.com/jarrydandthejackles/wordsearch-ts/issues"
   },
   "license": "MIT",
   "author": {
@@ -30,7 +30,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jarryd-and-the-jackles/wordsearch-ts.git"
+    "url": "https://github.com/jarrydandthejackles/wordsearch-ts.git"
   },
   "scripts": {
     "production": "tsc && cross-env NODE_ENV=production webpack --color",

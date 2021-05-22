@@ -37,8 +37,8 @@ creator.create();
 
 For the browser support there is a bundled package available here:
 
-- [Bundled JS](https://jarryd-and-the-jackles.github.io/wordsearch-ts/example/wordsearch.bundle.js)
-- [Source Maps](https://jarryd-and-the-jackles.github.io/wordsearch-ts/example/wordsearch.bundle.js.map)
+- [Bundled JS](https://jarrydandthejackles.github.io/wordsearch-ts/example/wordsearch.bundle.js)
+- [Source Maps](https://jarrydandthejackles.github.io/wordsearch-ts/example/wordsearch.bundle.js.map)
 
 The bundled packed makes the library available through the `JJWordSearch` global. Usage is the same as above except you don't need an import:
 
@@ -53,17 +53,17 @@ var creator = new JJWordSearch.Creator({
 creator.create();
 ```
 
-> Please see the [`CreatorOptionsInterface` interface](https://github.com/jarryd-and-the-jackles/wordsearch-ts/src/creator.d.ts) for further available options.
+> Please see the [`CreatorOptionsInterface` interface](https://github.com/jarrydandthejackles/wordsearch-ts/blob/master/src/creator.d.ts) for further available options.
 
 ## Demo
 
 There is a demo available here:
 
-- [Page](https://jarryd-and-the-jackles.github.io/wordsearch-ts/example/index.html)
-- [Source](https://github.com/jarryd-and-the-jackles/wordsearch-ts/src/app.ts)
+- [Page](https://jarrydandthejackles.github.io/wordsearch-ts/example/index.html)
+- [Source](https://github.com/jarrydandthejackles/wordsearch-ts/blob/master/src/app.ts)
 
 ## Available Options
 
 WIP
 
-> Please see the [`CreatorOptionsInterface` interface](https://github.com/jarryd-and-the-jackles/wordsearch-ts/src/creator.d.ts) for further available options.
+> Please see the [`CreatorOptionsInterface` interface](https://github.com/jarrydandthejackles/wordsearch-ts/blob/master/src/creator.d.ts) for further available options.
