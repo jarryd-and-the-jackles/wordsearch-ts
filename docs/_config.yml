@@ -1,5 +1,5 @@
 title: jarrydandthejackles-wordsearch-ts
-theme: jekyll-theme-tactile
+theme: jekyll-theme-cayman
 defaults:
   - scope:
       path: "example"
