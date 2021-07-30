@@ -1,1 +1,1 @@
-{"version":3,"file":"chronometer.d.ts","sourceRoot":"./","sources":["utils/chronometer.ts"],"names":[],"mappings":";AAAA,qBAAa,WAAW;IACpB,OAAO,EAAE,MAAM,CAAC;IAChB,KAAK,EAAE,MAAM,CAAC,OAAO,CAAC;;IAOtB,IAAI;IAIJ,UAAU;CAIb;AAED,eAAe,WAAW,CAAC"}
+{"version":3,"file":"chronometer.d.ts","sourceRoot":"","sources":["chronometer.ts"],"names":[],"mappings":";AAAA,qBAAa,WAAW;IACpB,OAAO,EAAE,MAAM,CAAC;IAChB,KAAK,EAAE,MAAM,CAAC,OAAO,CAAC;;IAOtB,IAAI;IAIJ,UAAU;CAIb;AAED,eAAe,WAAW,CAAC"}
