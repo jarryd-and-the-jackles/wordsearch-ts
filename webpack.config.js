@@ -7,7 +7,7 @@ const config = {
   mode: process.env.NODE_ENV !== "production" ? "development" : "production",
   devtool: process.env.NODE_ENV !== "production" ? "eval-source-map" : "nosources-source-map",
   devServer: {
-    contentBase: "./dist"
+    contentBase: "./dist",
   },
   entry: {
     wordsearch: "./src/index",
@@ -15,17 +15,18 @@ const config = {
       import: "./src/app",
       dependOn: [
         "wordsearch",
-      ]
+      ],
     },
   },
   output: {
     path: path.resolve(__dirname, "dist"),
+    publicPath: "./",
     filename: "[name].bundle.js",
     clean: true,
     library: {
       type: "umd",
       name: "JJWordSearch",
-    }
+    },
   },
   target: ["web", "es5"],
   stats: {
@@ -39,11 +40,16 @@ const config = {
   module: {
     rules: [
       {
+        test: /\.ts(x?)$/i,
+        use: [
+          "ts-loader",
+        ],
+      },
+      {
         test: /\.js$/i,
-        exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-        },
+        use: [
+          "babel-loader",
+        ],
       },
       {
         test: /\.s[ac]ss$/i,
@@ -60,13 +66,13 @@ const config = {
       "node_modules",
       path.resolve(__dirname),
     ],
-    extensions: [".js", ".scss", ".css"],
+    extensions: [".ts", ".tsx", ".js", ".scss", ".css"],
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: "./html/app.html",
       hash: true,
-      minify: true
+      minify: true,
     }),
   ],
 };

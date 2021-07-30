@@ -33,12 +33,12 @@
     "url": "https://github.com/jarrydandthejackles/wordsearch-ts.git"
   },
   "scripts": {
-    "production": "tsc && cross-env NODE_ENV=production webpack --color",
+    "production": "cross-env NODE_ENV=production webpack --color",
     "prod": "npm run production",
-    "development": "tsc && cross-env NODE_ENV=development webpack --progress --color",
+    "development": "cross-env NODE_ENV=development webpack --progress --color",
     "dev": "npm run development",
     "watch": "npm run dev -- --watch",
-    "serve": "tsc && webpack serve --open"
+    "serve": "webpack serve --open"
   },
   "devDependencies": {
     "@babel/core": "^7.14.6",
@@ -52,6 +52,7 @@
     "sass": "^1.35.1",
     "sass-loader": "^12.1.0",
     "style-loader": "^3.0.0",
+    "ts-loader": "^9.2.4",
     "tslib": "^2.3.0",
     "typescript": "^4.3.5",
     "webpack": "^5.42.0",
