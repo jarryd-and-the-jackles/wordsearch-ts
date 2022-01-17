@@ -7,7 +7,11 @@ const config = {
   mode: process.env.NODE_ENV !== "production" ? "development" : "production",
   devtool: process.env.NODE_ENV !== "production" ? "eval-source-map" : "nosources-source-map",
   devServer: {
-    contentBase: "./dist",
+    static: {
+      directory: path.join(__dirname, 'dist'),
+    },
+    compress: true,
+    port: 8080,
   },
   entry: {
     wordsearch: "./src/index",
